@@ -5,15 +5,16 @@
 #include "ListNode.h"
 
 class ProcessList {
-  ListNode* head;
+  ListNode* head;  // Указатель на первый элемент списка
 
  public:
-  ProcessList() : head(nullptr) {};
-  ~ProcessList();
-  bool insert(const PCB* newPCB);
-  bool remove(int pid);
+  ProcessList() : head(nullptr) {};  // Конструктор
+  ~ProcessList();                    // Деструктор
 
-  void printList();
+  bool insert(const PCB* newPCB);  // Добавление элемента
+  bool remove(int pid);            // Удаление элемента по ID
+
+  void printList();  // Вывод списка на экран
 };
 
 #endif  // PROCESSLIST_H

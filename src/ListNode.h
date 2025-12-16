@@ -10,11 +10,12 @@ class ListNode {
   ListNode* next;
 
  public:
+  // Конструкторы
   ListNode();
   ListNode(const PCB* newPCB, ListNode* next);
   ListNode(int processID, std::string& processName, PCB::Status processStatus,
            int commandCounter, ListNode* next);
-
+  // Геттеры
   ListNode* getNext() { return next; }
   int getProcessID() const { return data.processID; }
   std::string getProcessName() const { return data.processName; }
@@ -24,13 +25,15 @@ class ListNode {
     if (0 <= ind && ind < CPUREGISTERSIZE) return data.cpuRegisters[ind];
     throw std::out_of_range("Значение индекса выходит за пределы регистров");
   }
-
+  // Сеттеры
   void setProcessID(int id) { data.processID = id; }
   void setProcessName(std::string name) { data.processName = name; }
   void setProcessStatus(PCB::Status st) { data.processStatus = st; }
   void setCommandCounter(int cc) { data.commandCounter = cc; }
   void setRegister(int ind, int val);
   void setNext(ListNode* newNext) { next = newNext; }
+
+  // Вывод элемента
   void print() { data.print(); }
 };
 
