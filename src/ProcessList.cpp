@@ -11,13 +11,14 @@ bool ProcessList::insert(const PCB* newPCB) {
     node = node->getNext();
   }
   if (node != nullptr && node->getProcessID() == newPCB->processID) {
+    delete newList;
     return false;
   }
   if (prev != nullptr)
     prev->setNext(newList);
   else
     head = newList;
-  if (node != nullptr) newList->setNext(node);
+  newList->setNext(node);
   return true;
 }
 
@@ -31,9 +32,10 @@ bool ProcessList::remove(int pid) {
   if (node == nullptr) return false;
   if (prev != nullptr) {
     prev->setNext(node->getNext());
-    delete node;
+  } else {
+    head = node->getNext();
   }
-  head = node->getNext();
+
   delete node;
   return true;
 }
@@ -45,9 +47,11 @@ ProcessList::~ProcessList() {
     delete node;
     node = tmp;
   }
+  head = nullptr;
 }
 
 void ProcessList::printList() {
+  std::cout << "Список процессов: " << std::endl;
   ListNode* node = head;
   while (node != nullptr) {
     node->print();
