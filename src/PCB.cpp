@@ -12,7 +12,16 @@ PCB::PCB()
   for (int i = 0; i < CPUREGISTERSIZE; ++i) cpuRegisters[i] = 0;
 }
 
-PCB::PCB(int processID, std::string& processName, Status processStatus,
+PCB::PCB(const PCB* copyPCB) {
+  processID = copyPCB->processID;
+  processName = copyPCB->processName;
+  processStatus = copyPCB->processStatus;
+  commandCounter = copyPCB->commandCounter;
+  for (int i = 0; i < CPUREGISTERSIZE; ++i)
+    cpuRegisters[i] = copyPCB->cpuRegisters[i];
+}
+
+PCB::PCB(int processID, std::string processName, Status processStatus,
          int commandCounter)
     : processID(processID),
       processName(processName),

@@ -17,7 +17,8 @@ struct PCB {
   int cpuRegisters[CPUREGISTERSIZE];
 
   PCB();
-  PCB(int processID, std::string& processName, Status processStatus,
+  PCB(const PCB* copyPCB);
+  PCB(int processID, std::string processName, Status processStatus,
       int commandCounter);
 
   void print() const;

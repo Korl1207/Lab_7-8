@@ -7,6 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(prog
   src/main.cpp
   src/PCB.cpp
+  src/ListNode.cpp
+  src/ProcessList.cpp
 )
 
 include_directories(src)
